@@ -1,0 +1,17 @@
+//KRISHNA RAMLALL -- LAB7 -- EMT2410
+#include "mbed.h"
+
+PwmOut myled(D3);
+AnalogIn mypotentiometer(A0);
+Serial pc(USBTX, USBRX);
+
+int main()
+{
+pc.baud(115200);
+myled.period(0.020f);
+while(1) {
+myled = mypotentiometer;
+pc.printf("%f \n\r", mypotentiometer.read());
+wait(0.1);
+}
+}
